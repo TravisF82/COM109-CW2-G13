@@ -1,0 +1,102 @@
+:root{
+    --blue: #1e50fd;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Poppins';
+    overflow-x: hidden;
+}
+
+.back-square{
+    position: absolute;
+    border-radius: 10px;
+    z-index: -1
+}
+
+.top-left{
+    top: -100px;
+    left: -100px;
+    width: 200px;
+    height: 200px;
+    background-color: var(--blue);
+}
+
+.bottom-right{
+    bottom: -70px;
+    right: -70px;
+    width: 150px;
+    height: 150px;
+    background-color: orange;
+}
+
+.booking{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 60%;
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 20px;
+    gap: 10px;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.booking input:focus{
+    outline: none;
+    border: 2px solid var(--blue);
+}
+
+.booking input{
+    padding: 10px;
+}
+
+.booking input[type=date]{
+    font-family: 'Poppins';
+}
+
+.booking .name-inputs{
+    display: flex;
+    gap: 10px;
+}
+
+.booking .name-inputs > div{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.fa-regular{
+    margin-left: 5px;
+}
+
+.booking button{
+    margin-top: 10px;
+    padding: 5px;
+    width: 130px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid white;
+    cursor: pointer;
+    align-self: center;
+    color: white;
+    background-color: var(--blue);
+    font-size: 18px;
+}
+
+.booking .error-message{
+    color: #E53935;
+    font-size: 12px;
+    min-height: 18px;
+}
+
+.input-error{
+    border: 2px solid #E53935;
+}
