@@ -130,12 +130,19 @@ function ValidationResult(valid, error=""){
     };
 }
 
+function ContainsDigit(str){
+    return /\d/.test(str);
+}
+
 function ValidateForename(forename){
     if (forename.trim() === ""){
         return ValidationResult(false, "Forename is required.");
     }
     else if (forename.trim().length <= 1){
         return ValidationResult(false, "Forename must be at least 1 character.")
+    }
+    else if (ContainsDigit(forename)){
+        return ValidationResult(false, "Please enter a valid forename.");
     }
     // contains digit check also?
     return ValidationResult(true);
@@ -148,6 +155,9 @@ function ValidateSurname(surname){
     else if (surname.trim().length <= 1){
         return ValidationResult(false, "Surname must be at least 2 characters.")
     }
+    else if (ContainsDigit(surname)){
+        return ValidationResult(false, "Please enter a valid surname.");
+    }
 
     return ValidationResult(true);;
 }
@@ -156,27 +166,21 @@ function ValidateEmail(email){
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)){
-        return ValidationResult(false, "Please enter a valid email address.")
+        return ValidationResult(false, "Please enter a valid email address.");
     }
 
-    return ValidationResult(true);;
+    return ValidationResult(true);
 }
 
 function ValidatePhone(phone){
     const phoneRegex = /^(?:(?:\+44\s?|0)7\d{3}\s?\d{3}\s?\d{3})$/;
 
     if (phone.trim() === "") {
-        return ValidationResult(
-            false,
-            "Phone number is required."
-        );
+        return ValidationResult(false, "Phone number is required.");
     }
 
     if (!phoneRegex.test(phone)) {
-        return ValidationResult(
-            false,
-            "Please enter a valid UK mobile number."
-        );
+        return ValidationResult(false, "Please enter a valid UK mobile number.");
     }
 
     return ValidationResult(true);
