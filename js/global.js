@@ -30,6 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (currentUser && memberPortalLink) {
-    memberPortalLink.textContent = `Dashboard (${currentUser})`;
+    memberPortalLink.innerHTML = `<i class="fa-solid fa-user"></i> ${currentUser}`;
   }
 });
