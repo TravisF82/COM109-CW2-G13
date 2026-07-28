@@ -223,10 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("active_session");
     sessionStorage.removeItem("active_session");
-
-    dashboardView.classList.add("hidden");
-    authContainer.classList.remove("hidden");
-    loginForm.reset();
+    window.location.reload();
   });
 
   // Initialize check on page load
