@@ -90,7 +90,12 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
+  const activeLocal = localStorage.getItem("active_session");
+  const activeSession = sessionStorage.getItem("active_session");
+  const currentUser = activeLocal || activeSession || "guest";
+
   const Booking = {
+    username: currentUser,
     forename: forename.value,
     surname: surname.value,
     email: email.value,
@@ -101,6 +106,7 @@ form.addEventListener("submit", (event) => {
 
   SaveBooking(Booking);
   form.reset();
+  alert("Booking successful!");
 });
 
 function SaveBooking(booking) {

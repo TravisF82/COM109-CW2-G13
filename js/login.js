@@ -184,6 +184,29 @@ document.addEventListener("DOMContentLoaded", () => {
     authContainer.classList.add("hidden");
     dashboardView.classList.remove("hidden");
     welcomeMessage.textContent = `Welcome back, ${username}!`;
+
+    // Fetch and display user-specific bookings
+    const bookingsList = document.getElementById('user-bookings-list');
+    if (bookingsList) {
+        bookingsList.innerHTML = ''; // clear previous
+        const allBookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        const userBookings = allBookings.filter(b => b.username === username);
+
+        if (userBookings.length === 0) {
+            bookingsList.innerHTML = '<li>No active bookings found.</li>';
+        } else {
+            userBookings.forEach(booking => {
+                const li = document.createElement('li');
+                li.style.background = '#fff';
+                li.style.padding = '10px';
+                li.style.marginBottom = '10px';
+                li.style.borderRadius = '4px';
+                li.style.borderLeft = '4px solid var(--blue)';
+                li.innerHTML = `<strong>Rental:</strong> ${booking.startDate} to ${booking.endDate}`;
+                bookingsList.appendChild(li);
+            });
+        }
+    }
   }
 
   function checkActiveSession() {
