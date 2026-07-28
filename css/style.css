@@ -86,4 +86,4 @@ footer ul li a{
 #copyright{
     padding: 10px 0px;
     text-align: center;
-}
+}.active { font-weight: bold; border-bottom: 2px solid var(--blue); }
