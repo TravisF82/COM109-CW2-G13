@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Real-Time Password Strength Validation
     // ----------------------------------------------------
     const regPassword = document.getElementById('reg-password');
+    const regPasswordError = document.getElementById('reg-password-error');
     const strengthBar = document.getElementById('strength-bar');
     const strengthText = document.getElementById('strength-text');
     const confirmPassword = document.getElementById('reg-confirm-password');
@@ -100,8 +101,33 @@ document.addEventListener('DOMContentLoaded', () => {
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        if (regUsernameError.textContent || confirmError.textContent || regPassword.value.length < 8) {
-            alert("Please fix the validation errors before submitting.");
+        let isValid = true;
+        
+        if (/[^a-zA-Z0-9]/.test(regUsername.value)) {
+            regUsernameError.textContent = "No special characters allowed.";
+            isValid = false;
+        }
+        
+        const pwd = regPassword.value;
+        const hasUpper = /[A-Z]/.test(pwd);
+        const hasNumber = /[0-9]/.test(pwd);
+        const hasSpecial = /[^A-Za-z0-9]/.test(pwd);
+        
+        if (pwd.length < 8 || !hasUpper || !hasNumber || !hasSpecial) {
+            regPasswordError.style.color = 'red';
+            regPasswordError.textContent = "Password does not meet the minimum requirements.";
+            isValid = false;
+        } else {
+            regPasswordError.style.color = '#666';
+            regPasswordError.textContent = "Password meets requirements.";
+        }
+        
+        if (confirmPassword.value !== pwd || confirmPassword.value.length === 0) {
+            confirmError.textContent = "Passwords do not match.";
+            isValid = false;
+        }
+
+        if (!isValid) {
             return;
         }
 
