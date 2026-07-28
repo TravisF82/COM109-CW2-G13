@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
           sessionStorage.setItem("active_session", username);
         }
 
-        showDashboard(username);
+        window.location.href = '../index.html';
       } else {
         loginError.textContent = "Invalid password.";
       }
