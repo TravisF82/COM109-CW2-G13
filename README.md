@@ -5,7 +5,7 @@ Group 13 CW2 repository
 
 ## Individual Roles
 * Travis - 
-* Oran - 
+* Oran - Built the login/registration portal with client-side validation and storage. Also added a global session script to keep users logged in across all pages, created the personalized user dashboard that links to the booking system, and built out the Contact Us page.
 * Grace - 
 
 ## Repo Link
