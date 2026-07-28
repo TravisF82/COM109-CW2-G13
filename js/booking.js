@@ -23,7 +23,7 @@ startDate.addEventListener("change", () => {
 
 endDate.addEventListener("change", UpdateDuration);
 
-function UpdateDuration() {
+function UpdateDuration(){
   const start = new Date(startDate.value);
   const end = new Date(endDate.value);
   const duration = (end - start) / (1000 * 60 * 60 * 24) + 1;
@@ -31,6 +31,25 @@ function UpdateDuration() {
   duration === 1
     ? (durationLabel.textContent = `Duration: ${duration} day`)
     : (durationLabel.textContent = `Duration: ${duration} days`);
+}
+
+function CalculateRentalDurationDays(){
+    const start = new Date(startDate.value);
+    const end = new Date(endDate.value);
+    const duration = (end - start) / (1000 * 60 * 60 * 24) + 1;
+    return duration;
+}
+
+function FormatDurationInDaysToString(duration){
+    return duration === 1 ?
+    `Duration: ${duration} day` : `Duration: ${duration} days`;
+}
+
+function UpdateDuration(){
+    const duration = CalculateRentalDurationDays();
+    const durationString = FormatDurationInDaysToString(duration);
+
+    durationLabel.textContent = durationString;
 }
 
 function SetMaxEndDate() {
@@ -69,6 +88,9 @@ phone.addEventListener("change", () => {
 });
 
 // FORM SUBMISSION
+
+const viewBookingButton = document.getElementById("go-to-booking");
+
 const form = document.getElementById("booking-form");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -106,14 +128,24 @@ form.addEventListener("submit", (event) => {
 
   SaveBooking(Booking);
   form.reset();
-  alert("Booking successful!");
 });
 
-function SaveBooking(booking) {
+function SaveBooking(booking){
+  const existingBookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    SaveBooking(Booking);
+    SetBookingDetailsForConfirmation();
+    form.reset();
+    ShowConfirmationForm();
+};
+
+function ShowConfirmationForm(){
+    confirmationOverlay.classList.add("active");
+}
+
+function SaveBooking(booking){
   const existingBookings = JSON.parse(localStorage.getItem("bookings")) || [];
 
   existingBookings.push(booking);
-  console.log(existingBookings);
 
   localStorage.setItem("bookings", JSON.stringify(existingBookings));
 }
@@ -149,8 +181,21 @@ function ValidateForename(forename) {
   } else if (ContainsDigit(forename)) {
     return ValidationResult(false, "Please enter a valid forename.");
   }
-  // contains digit check also?
+
   return ValidationResult(true);
+}
+
+function ValidateForename(forename){
+    if (forename.trim() === ""){
+        return ValidationResult(false, "Forename is required.");
+    }
+    else if (forename.trim().length <= 1){
+        return ValidationResult(false, "Forename must be at least 1 character.")
+    }
+    else if (ContainsDigit(forename)){
+        return ValidationResult(false, "Please enter a valid forename.");
+    }
+    return ValidationResult(true);
 }
 
 function ValidateSurname(surname) {
@@ -171,6 +216,12 @@ function ValidateEmail(email) {
   if (!emailRegex.test(email)) {
     return ValidationResult(false, "Please enter a valid email address.");
   }
+    if (email.trim() === ""){
+        return ValidationResult(false, "Email is required.");
+    }
+    else if (!emailRegex.test(email)){
+        return ValidationResult(false, "Please enter a valid email address.");
+    }
 
   return ValidationResult(true);
 }
@@ -185,6 +236,12 @@ function ValidatePhone(phone) {
   if (!phoneRegex.test(phone)) {
     return ValidationResult(false, "Please enter a valid UK mobile number.");
   }
+    if (phone.trim() === "") {
+        return ValidationResult(false, "Phone number is required.");
+    }
+    else if (!phoneRegex.test(phone)) {
+        return ValidationResult(false, "Please enter a valid UK mobile number.");
+    }
 
   return ValidationResult(true);
 }
@@ -197,4 +254,33 @@ function ShowError(input, message, errorElement) {
 function ClearError(input, errorElement) {
   input.classList.remove("input-error");
   errorElement.textContent = "";
+}
+function ClearError(input, errorElement){
+    input.classList.remove("input-error");
+    errorElement.textContent = "";
+}
+
+
+
+const confirmationOverlay = document.getElementById("confirmation-overlay");
+const homeButton = document.getElementById("go-to-home");
+
+homeButton.addEventListener("click", () => {
+    window.location.href = "../index.html";
+});
+
+viewBookingButton.addEventListener("click", () => {
+
+});
+
+const confirmationCarType = document.getElementById("confirmation-car-type");
+const confirmationPickupDate = document.getElementById("confirmation-pickup-date");
+const confirmationReturnDate = document.getElementById("confirmation-return-date");
+const confirmationRentalDuration = document.getElementById("confirmation-rental-duration");
+
+function SetBookingDetailsForConfirmation(){
+    //confirmationCarType.value = something that idk yet
+    confirmationPickupDate.textContent = startDate.value;
+    confirmationReturnDate.textContent = endDate.value;
+    confirmationRentalDuration.textContent = FormatDurationInDaysToString(CalculateRentalDurationDays());
 }

@@ -67,6 +67,12 @@
         placeholder="Email"
       />
       <span class="error-message" id="email-error"></span>
+        <label>Phone Number<i class="fa-solid fa-phone"></i></label>
+        <div class="phone-input">
+            <img src="../images/uk_flag.svg" id="flag">
+            <input type="tel" name="phone" for="phone" id="phone" placeholder="Phone Number">
+        </div>
+        <span class="error-message" id="phone-error"></span>
 
       <label>Phone Number<i class="fa-solid fa-phone"></i></label>
       <input
@@ -93,6 +99,59 @@
       <label id="duration"></label>
       <button type="submit">Confirm</button>
     </form>
+
+    <!--Confirmation form-->
+    <div class="confirmation-overlay" id="confirmation-overlay">
+        <div class="confirmation-form">
+            <h2>Booking for _ successfully created</h2>
+            <div class="checkmark-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="svg-success" viewBox="0 0 24 24">
+                    <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+                    <circle class="success-circle-outline" cx="12" cy="12" r="11.5"/>
+                    <circle class="success-circle-fill" cx="12" cy="12" r="11.5"/>
+                    <polyline class="success-tick" points="17,8.5 9.5,15.5 7,13"/>
+                    </g>
+                </svg>
+            </div>
+
+            <p>Your car rental has been successfully booked.</p>
+
+            <div class="booking-details-container">
+                <div class="booking-details-header">
+                    <label>Booking Details</label>
+                </div>
+
+                <div class="booking-details-content">
+                    <div class="booking-row">
+                        <span>Car Type</span>
+                        <span id="confirmation-car-type"></span>
+                    </div>
+                    <div class="booking-row">
+                        <span>Pickup Date</span>
+                        <span id="confirmation-pickup-date"></span>
+                    </div>
+                    <div class="booking-row">
+                        <span>Return Date</span>
+                        <span id="confirmation-return-date"></span>
+                    </div>
+                    <div class="booking-row">
+                        <span>Rental Duration</span>
+                        <span id="confirmation-rental-duration"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirmation-buttons">
+                <button id="go-to-booking" type="button">
+                    View My Booking
+                </button>
+                <button id="go-to-home" type="button">
+                    Back to Home
+                </button>
+            </div>
+
+        </div>
+    </div>
 
     <script src="../js/booking.js"></script>
     <script src="../js/global.js"></script>
