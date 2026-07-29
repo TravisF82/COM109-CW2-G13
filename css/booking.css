@@ -231,7 +231,7 @@ body {
     stroke: #ffffff;
     stroke-dasharray: 15px, 15px;
     stroke-dashoffset: -14px;
-    animation: success-tick 450ms ease 1400ms forwards;
+    animation: success-tick 450ms ease 950ms forwards;
     opacity: 0;
   }
 
@@ -241,7 +241,7 @@ body {
     stroke: var(--checkmark-green);
     stroke-dasharray: 72px, 72px;
     stroke-dashoffset: 72px;
-    animation: success-circle-outline 300ms ease-in-out 800ms forwards;
+    animation: success-circle-outline 300ms ease-in-out 350ms forwards;
     opacity: 0;
   }
 
@@ -249,7 +249,7 @@ body {
     fill: var(--checkmark-green);
     stroke: none;
     opacity: 0;
-    animation: success-circle-fill 300ms ease-out 1100ms forwards;
+    animation: success-circle-fill 300ms ease-out 650ms forwards;
   }
 
 .fa-check{
@@ -297,7 +297,7 @@ body {
 }
 
 .confirmation-buttons button{
-    padding: 5px;
+    padding: 10px;
     font-size: 18px;
     border-radius: 10px;
     cursor: pointer;

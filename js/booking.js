@@ -4,6 +4,29 @@ const MAX_RENTAL_DAYS = 60;
 const startDate = document.getElementById("start-date");
 const endDate = document.getElementById("end-date");
 const durationLabel = document.getElementById("duration");
+
+const forename = document.getElementById("forename");
+const surname = document.getElementById("surname");
+const email = document.getElementById("email");
+const phone = document.getElementById("phone");
+
+const forenameError = document.getElementById("forename-error");
+const surnameError = document.getElementById("surname-error");
+const emailError = document.getElementById("email-error");
+const phoneError = document.getElementById("phone-error");
+
+const form = document.getElementById("booking-form");
+
+const confirmationOverlay = document.getElementById("confirmation-overlay");
+
+const confirmationCarType = document.getElementById("confirmation-car-type");
+const confirmationPickupDate = document.getElementById("confirmation-pickup-date");
+const confirmationReturnDate = document.getElementById("confirmation-return-date");
+const confirmationRentalDuration = document.getElementById("confirmation-rental-duration");
+
+const homeButton = document.getElementById("go-to-home");
+const viewBookingButton = document.getElementById("go-to-booking");
+
 startDate.min = today;
 startDate.value = today;
 endDate.value = today;
@@ -23,33 +46,23 @@ startDate.addEventListener("change", () => {
 
 endDate.addEventListener("change", UpdateDuration);
 
-function UpdateDuration(){
+function CalculateRentalDurationDays(){
   const start = new Date(startDate.value);
   const end = new Date(endDate.value);
   const duration = (end - start) / (1000 * 60 * 60 * 24) + 1;
-
-  duration === 1
-    ? (durationLabel.textContent = `Duration: ${duration} day`)
-    : (durationLabel.textContent = `Duration: ${duration} days`);
-}
-
-function CalculateRentalDurationDays(){
-    const start = new Date(startDate.value);
-    const end = new Date(endDate.value);
-    const duration = (end - start) / (1000 * 60 * 60 * 24) + 1;
-    return duration;
+  return duration;
 }
 
 function FormatDurationInDaysToString(duration){
-    return duration === 1 ?
-    `Duration: ${duration} day` : `Duration: ${duration} days`;
+  return duration === 1 ?
+  `Duration: ${duration} day` : `Duration: ${duration} days`;
 }
 
 function UpdateDuration(){
-    const duration = CalculateRentalDurationDays();
-    const durationString = FormatDurationInDaysToString(duration);
+  const duration = CalculateRentalDurationDays();
+  const durationString = FormatDurationInDaysToString(duration);
 
-    durationLabel.textContent = durationString;
+  durationLabel.textContent = durationString;
 }
 
 function SetMaxEndDate() {
@@ -59,17 +72,6 @@ function SetMaxEndDate() {
 
   endDate.max = maxEndDate.toISOString().split("T")[0];
 }
-
-// might move this
-const forename = document.getElementById("forename");
-const surname = document.getElementById("surname");
-const email = document.getElementById("email");
-const phone = document.getElementById("phone");
-
-const forenameError = document.getElementById("forename-error");
-const surnameError = document.getElementById("surname-error");
-const emailError = document.getElementById("email-error");
-const phoneError = document.getElementById("phone-error");
 
 forename.addEventListener("change", () => {
   ValidateInputField(forename, forenameError, ValidateForename);
@@ -87,11 +89,6 @@ phone.addEventListener("change", () => {
   ValidateInputField(phone, phoneError, ValidatePhone);
 });
 
-// FORM SUBMISSION
-
-const viewBookingButton = document.getElementById("go-to-booking");
-
-const form = document.getElementById("booking-form");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -116,7 +113,7 @@ form.addEventListener("submit", (event) => {
   const activeSession = sessionStorage.getItem("active_session");
   const currentUser = activeLocal || activeSession || "guest";
 
-  const Booking = {
+  const booking = {
     username: currentUser,
     forename: forename.value,
     surname: surname.value,
@@ -126,23 +123,21 @@ form.addEventListener("submit", (event) => {
     endDate: endDate.value,
   };
 
-  SaveBooking(Booking);
+  SaveBooking(booking);
+  SetBookingDetailsForConfirmation();
+  ShowConfirmationForm();
   form.reset();
 });
 
 function SaveBooking(booking){
-  const existingBookings = JSON.parse(localStorage.getItem("bookings")) || [];
-    SaveBooking(Booking);
-    SetBookingDetailsForConfirmation();
-    form.reset();
-    ShowConfirmationForm();
-};
-
-function ShowConfirmationForm(){
-    confirmationOverlay.classList.add("active");
+  SaveBookingToLocalStorage(booking);
 }
 
-function SaveBooking(booking){
+function ShowConfirmationForm(){
+  confirmationOverlay.classList.add("active");
+}
+
+function SaveBookingToLocalStorage(booking){
   const existingBookings = JSON.parse(localStorage.getItem("bookings")) || [];
 
   existingBookings.push(booking);
@@ -185,19 +180,6 @@ function ValidateForename(forename) {
   return ValidationResult(true);
 }
 
-function ValidateForename(forename){
-    if (forename.trim() === ""){
-        return ValidationResult(false, "Forename is required.");
-    }
-    else if (forename.trim().length <= 1){
-        return ValidationResult(false, "Forename must be at least 1 character.")
-    }
-    else if (ContainsDigit(forename)){
-        return ValidationResult(false, "Please enter a valid forename.");
-    }
-    return ValidationResult(true);
-}
-
 function ValidateSurname(surname) {
   if (surname.trim() === "") {
     return ValidationResult(false, "Surname is required.");
@@ -213,15 +195,12 @@ function ValidateSurname(surname) {
 function ValidateEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (!emailRegex.test(email)) {
+  if (email.trim() === ""){
+    return ValidationResult(false, "Email is required.");
+  }
+  else if (!emailRegex.test(email)) {
     return ValidationResult(false, "Please enter a valid email address.");
   }
-    if (email.trim() === ""){
-        return ValidationResult(false, "Email is required.");
-    }
-    else if (!emailRegex.test(email)){
-        return ValidationResult(false, "Please enter a valid email address.");
-    }
 
   return ValidationResult(true);
 }
@@ -232,16 +211,9 @@ function ValidatePhone(phone) {
   if (phone.trim() === "") {
     return ValidationResult(false, "Phone number is required.");
   }
-
-  if (!phoneRegex.test(phone)) {
+  else if (!phoneRegex.test(phone)) {
     return ValidationResult(false, "Please enter a valid UK mobile number.");
   }
-    if (phone.trim() === "") {
-        return ValidationResult(false, "Phone number is required.");
-    }
-    else if (!phoneRegex.test(phone)) {
-        return ValidationResult(false, "Please enter a valid UK mobile number.");
-    }
 
   return ValidationResult(true);
 }
@@ -255,28 +227,18 @@ function ClearError(input, errorElement) {
   input.classList.remove("input-error");
   errorElement.textContent = "";
 }
-function ClearError(input, errorElement){
-    input.classList.remove("input-error");
-    errorElement.textContent = "";
-}
 
 
-
-const confirmationOverlay = document.getElementById("confirmation-overlay");
-const homeButton = document.getElementById("go-to-home");
 
 homeButton.addEventListener("click", () => {
-    window.location.href = "../index.html";
+  window.location.href = "../index.html";
 });
 
 viewBookingButton.addEventListener("click", () => {
-
+  window.location.href = "./login.html";
 });
 
-const confirmationCarType = document.getElementById("confirmation-car-type");
-const confirmationPickupDate = document.getElementById("confirmation-pickup-date");
-const confirmationReturnDate = document.getElementById("confirmation-return-date");
-const confirmationRentalDuration = document.getElementById("confirmation-rental-duration");
+
 
 function SetBookingDetailsForConfirmation(){
     //confirmationCarType.value = something that idk yet
