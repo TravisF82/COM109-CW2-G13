@@ -1,9 +1,132 @@
+:root{
+  --section-background: #f1f6fe;
+}
+
 section {
   margin: 100px 20px 0px 20px;
 }
 
 .section-title {
   margin-bottom: 10px;
+}
+
+#intro span{
+  color: var(--blue);
+}
+
+.seperator.blue{
+  background-color: var(--blue);
+  width: 10%;
+  height: 3px;
+}
+
+.seperator.orange{
+  background-color: orange;
+  width: 10%;
+  height: 3px;
+}
+
+#intro{
+  position: relative;
+  height: 500px;
+  margin: 0;
+}
+
+#intro img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#intro img.active{
+  opacity: 1;
+}
+
+#intro::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    white 0%,
+    rgba(255, 255, 255, 0.95) 15%,
+    rgba(255, 255, 255, 0.5) 35%,
+    rgba(255, 255, 255, 0) 65%
+    );
+}
+
+.hero-content{
+  position: relative;
+  z-index: 1;
+  width: 45%;
+  padding: 100px 0 0 60px;
+}
+
+#heading{
+  font-weight: 500;
+}
+
+#sub-heading{
+  font-weight: 200;
+}
+
+.carousel{
+  position: relative;
+  height: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.carousel .slide{
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 70%;
+  max-height: 90%;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.carousel .slide.active{
+  opacity: 1;
+}
+
+.carousel label{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -20px;
+  z-index: 2;
+}
+
+#why-choose-us-section{
+  height: 300px;
+  text-align: center;
+  background-color: var(--section-background);
+}
+
+#why-choose-us-section h4{
+  color: orange;
+}
+
+#values-section{
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.our-story-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.our-story-container .content h4{
+  color: orange;
 }
 
 .card-grid-container {
@@ -13,6 +136,7 @@ section {
 }
 
 .card {
+  position: relative;
   text-align: center;
   padding: 5px;
   background-color: white;
@@ -24,4 +148,72 @@ section {
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card .icon{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: var(--blue);
+  color: white;
+}
+
+.card .icon i{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#values-section h4{
+  color: orange;
+  margin-bottom: -2px;
+}
+
+.values-container{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.values-container > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  padding: 5px;
+}
+
+.values-container > div:nth-child(1),
+.values-container > div:nth-child(2),
+.values-container > div:nth-child(3){
+  border-right: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+.values-container .icon-wrapper{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(255, 165, 0, 0.4);
+  border-radius: 50%;
+}
+
+.values-container > div i{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.7rem;
+  color: orange;
+}
+
+.icon-wrapper .fa-check{
+  font-size: 12px;
+  color: white;
 }
