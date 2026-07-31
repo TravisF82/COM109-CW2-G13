@@ -30,6 +30,7 @@ const viewBookingButton = document.getElementById("go-to-booking");
 startDate.min = today;
 startDate.value = today;
 endDate.value = today;
+endDate.min = today;
 
 SetMaxEndDate();
 UpdateDuration();
