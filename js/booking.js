@@ -115,7 +115,6 @@ form.addEventListener("submit", (event) => {
   const currentUser = activeLocal || activeSession || "guest";
 
   const booking = {
-    username: currentUser,
     forename: forename.value,
     surname: surname.value,
     email: email.value,
@@ -139,11 +138,14 @@ function ShowConfirmationForm(){
 }
 
 function SaveBookingToLocalStorage(booking){
-  const existingBookings = JSON.parse(localStorage.getItem("bookings")) || [];
+  const currentUser = GetCurrentUser();
+  const existingBookingsMap = JSON.parse(localStorage.getItem("bookings")) || {};
+  const existingBookings = existingBookingsMap[currentUser] || [];
 
   existingBookings.push(booking);
+  existingBookingsMap[currentUser] = existingBookings;
 
-  localStorage.setItem("bookings", JSON.stringify(existingBookings));
+  localStorage.setItem("bookings", JSON.stringify(existingBookingsMap));
 }
 
 function ValidateInputField(field, errorElement, validationFunc) {
