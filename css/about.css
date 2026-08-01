@@ -7,10 +7,6 @@ section {
   margin: 100px 20px 0px 20px;
 }
 
-#intro span{
-  color: var(--blue);
-}
-
 .seperator{
   width: 10%;
   height: 3px;
@@ -24,10 +20,16 @@ section {
   background-color: orange;
 }
 
+/*----------Introduction Section----------*/
+
 #intro{
   position: relative;
   height: 500px;
   margin: 0;
+}
+
+#intro span{
+  color: var(--blue);
 }
 
 #intro img{
@@ -73,6 +75,8 @@ section {
 #sub-heading{
   font-weight: 200;
 }
+
+/*----------Our Story Section----------*/
 
 .carousel{
   position: relative;
@@ -126,21 +130,6 @@ section {
   font-size: 0.8rem;
 }
 
-#why-choose-us-section{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 400px;
-  text-align: center;
-  background-color: var(--section-background);
-}
-
-#why-choose-us-section h4{
-  color: orange;
-}
-
 #values-section{
   text-align: center;
   margin-bottom: 100px;
@@ -164,6 +153,23 @@ section {
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 10px;
+}
+
+/*----------Why Choose Us Section----------*/
+
+#why-choose-us-section{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  text-align: center;
+  background-color: var(--section-background);
+}
+
+#why-choose-us-section h4{
+  color: orange;
 }
 
 #why-choose-us-section .title-container{
@@ -244,6 +250,8 @@ section {
   transform: translateX(-50%);
 }
 
+/*----------Values Section----------*/
+
 #values-section{
   position: relative;
 }
@@ -314,6 +322,8 @@ section {
   font-size: 12px;
   color: white;
 }
+
+/*----------How It Works Section----------*/
 
 #how-it-works-section{
   position: relative;
