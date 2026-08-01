@@ -235,3 +235,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize check on page load
   checkActiveSession();
 });
+
+const themeSwitch = document.getElementById("theme-switch");
+themeSwitch.addEventListener("change", () => {
+  localStorage.setItem("theme", themeSwitch.checked ? "dark" : "light");
+  document.documentElement.classList.toggle("dark-theme", themeSwitch.checked);
+});

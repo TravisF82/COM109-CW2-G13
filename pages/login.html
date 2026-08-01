@@ -48,7 +48,7 @@
             <h2 id="welcome-message">Welcome back!</h2>
             <div class="dashboard-content" style="text-align: center;">
                 <p>Manage your rentals and account settings here.</p>
-                <div id="user-bookings-container" style="margin-top: 20px; text-align: left; background: #eef2f5; padding: 20px; border-radius: 8px; max-height: 400px; overflow-y: scroll;">
+                <div id="user-bookings-container" style="margin-top: 20px; text-align: left; background: var(--background-accent); padding: 20px; border-radius: 8px; max-height: 400px; overflow-y: scroll;">
                     <h3 style="margin-bottom: 10px;"><i class="fa-solid fa-car"></i> My Bookings</h3>
                     <ul id="user-bookings-list" style="list-style-type: none; padding: 0;">
 
@@ -56,8 +56,20 @@
 
                     </ul>
                 </div>
-                <div class="settings-panel" style="margin-top: 20px; text-align: left; background: #f9f9f9; padding: 20px; border-radius: 8px;">
+                <div class="settings-panel" style="margin-top: 20px; text-align: left; background: var(--background-accent); padding: 20px; border-radius: 8px;">
                     <h3 style="margin-bottom: 15px;"><i class="fa-solid fa-gear"></i> Personal Settings</h3>
+
+                    <div class="toggle-theme-container">
+                      <label>Theme</label>
+                      <label class="theme-toggle">
+                        <input type="checkbox" class="checkbox" id="theme-switch" name="theme-switch">
+                        <span class="toggle">
+                          <i class="fa-solid fa-sun"></i>
+                          <i class="fa-solid fa-moon"></i>
+                        </span>
+                      </label>
+                    </div>
+
                     <form id="settings-form">
                         <label for="update-email" style="display: block; margin-bottom: 5px;">Update Email</label>
                         <input type="email" id="update-email" placeholder="New Email Address" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">

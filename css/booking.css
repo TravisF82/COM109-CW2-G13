@@ -1,6 +1,10 @@
 :root{
-    --blue: #1e50fd;
-    --checkmark-green: rgb(97, 182, 97);
+  --blue: #1e50fd;
+  --checkmark-green: rgb(97, 182, 97);
+}
+
+html.dark-theme{
+  --date-color-scheme: dark;
 }
 
 body {
@@ -12,6 +16,8 @@ body {
   min-height: 100vh;
   font-family: "Poppins";
   overflow-x: hidden;
+  color: var(--text);
+  background-color: var(--background)
 }
 
 .back-square {
@@ -46,7 +52,7 @@ body {
   border-radius: 30px;
   padding: 20px;
   gap: 10px;
-  background-color: white;
+  background-color: var(--background-accent);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -56,10 +62,15 @@ body {
 }
 
 .booking input {
+  background-color: var(--input-background);
+  border: 1px solid var(--input-border);
   padding: 10px;
+  border-radius: 8px;
 }
 
 .booking input[type="date"] {
+  color: var(--text);
+  color-scheme: var(--date-color-scheme);
   font-family: "Poppins";
 }
 
@@ -137,7 +148,7 @@ body {
   width: 130px;
   height: 50px;
   border-radius: 10px;
-  border: 2px solid white;
+  border: 2px solid var(--background-accent);
   cursor: pointer;
   align-self: center;
   color: white;

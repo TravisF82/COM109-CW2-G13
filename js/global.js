@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (currentUser && memberPortalLink) {
     memberPortalLink.innerHTML = `<i class="fa-solid fa-user"></i> ${currentUser}`;
   }
+
+  ApplyTheme();
 });
 
 function GetCurrentUser() {
@@ -37,4 +39,14 @@ function GetCurrentUser() {
   const activeSession = sessionStorage.getItem("active_session");
 
   return activeLocal || activeSession;
+}
+
+function GetTheme(){
+  return localStorage.getItem("theme") || "light";
+}
+
+function ApplyTheme(){
+  const theme = GetTheme();
+  document.documentElement.classList.toggle("dark-theme", theme === "dark");
+  themeSwitch.checked = theme === "dark";
 }
