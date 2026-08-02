@@ -43,6 +43,7 @@ section {
   height: 100%;
   object-fit: cover;
   object-position: center 70%;
+  user-select: none;
 }
 
 #intro img.active{
@@ -88,6 +89,7 @@ section {
   height: 400px;
   width: 100%;
   text-align: center;
+  user-select: none;
 }
 
 .carousel .slide{

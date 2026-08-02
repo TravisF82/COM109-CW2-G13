@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             userBookings.forEach(booking => {
                 const li = document.createElement('li');
-                li.style.background = '#fff';
+                li.style.background = 'var(--background)';
                 li.style.padding = '10px';
                 li.style.marginBottom = '10px';
                 li.style.borderRadius = '4px';
