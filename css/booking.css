@@ -115,11 +115,6 @@ body {
   margin-left: 5px;
 }
 
-.fa-info-circle {
-  position: relative;
-  color: red;
-}
-
 .fa-phone{
   transform: rotateZ(-120deg);
 }
@@ -168,38 +163,37 @@ body {
 
 /* ----------Confirmation form---------- */
 .confirmation-overlay{
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 999;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
 }
 
 .confirmation-overlay.active{
-    display: flex;
+  display: flex;
 }
 
 .confirmation-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 15px;
-    border: 1px solid black;
-    background-color: white;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  border: 1px solid black;
+  color: var(--text);
+  background-color: var(--background-accent);
+  padding: 20px;
 }
 
-
-
 .svg-success{
-    display: inline-block;
-    vertical-align: top;
-    height: 30px;
-    width: 30px;
-    opacity: 1;
-    overflow: visible;
+  display: inline-block;
+  vertical-align: top;
+  height: 30px;
+  width: 30px;
+  opacity: 1;
+  overflow: visible;
 }
 
 @keyframes success-tick {
@@ -237,91 +231,91 @@ body {
   }
 
 .success-tick {
-    fill: none;
-    stroke-width: 2px;
-    stroke: #ffffff;
-    stroke-dasharray: 15px, 15px;
-    stroke-dashoffset: -14px;
-    animation: success-tick 450ms ease 950ms forwards;
-    opacity: 0;
+  fill: none;
+  stroke-width: 2px;
+  stroke: #ffffff;
+  stroke-dasharray: 15px, 15px;
+  stroke-dashoffset: -14px;
+  animation: success-tick 450ms ease 950ms forwards;
+  opacity: 0;
   }
 
 .success-circle-outline {
-    fill: none;
-    stroke-width: 1px;
-    stroke: var(--checkmark-green);
-    stroke-dasharray: 72px, 72px;
-    stroke-dashoffset: 72px;
-    animation: success-circle-outline 300ms ease-in-out 350ms forwards;
-    opacity: 0;
+  fill: none;
+  stroke-width: 1px;
+  stroke: var(--checkmark-green);
+  stroke-dasharray: 72px, 72px;
+  stroke-dashoffset: 72px;
+  animation: success-circle-outline 300ms ease-in-out 350ms forwards;
+  opacity: 0;
   }
 
 .success-circle-fill {
-    fill: var(--checkmark-green);
-    stroke: none;
-    opacity: 0;
-    animation: success-circle-fill 300ms ease-out 650ms forwards;
+  fill: var(--checkmark-green);
+  stroke: none;
+  opacity: 0;
+  animation: success-circle-fill 300ms ease-out 650ms forwards;
   }
 
 .fa-check{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 25px;
-    color: var(--checkmark-green);
-    z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  color: var(--checkmark-green);
+  z-index: 1;
 }
 
 .booking-details-container{
-    display: flex;
-    flex-direction: column;
-    flex: 0.3 0.7;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 5px;
-    width: 80%;
+  display: flex;
+  flex-direction: column;
+  flex: 0.3 0.7;
+  border: 1px solid var(--input-border);
+  border-radius: 15px;
+  padding: 5px;
+  width: 80%;
 }
 
 .booking-details-header{
-    border-bottom: 1px solid black;
-    text-align: center;
+  border-bottom: 1px solid var(--input-border);
+  text-align: center;
 }
 
 .booking-details-content{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 200;
 }
 
 .booking-row{
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .confirmation-buttons{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
 }
 
 .confirmation-buttons button{
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 #go-to-booking{
-    background-color: var(--blue);
-    border: 2px solid white;
-    color: white;
+  background-color: var(--blue);
+  border: 2px solid white;
+  color: white;
 }
 
 #go-to-home{
-    border-color: 2px solid black;
-    color: black;
-    background-color: white;
+  border-color: 2px solid black;
+  color: black;
+  background-color: white;
 }

@@ -1,3 +1,11 @@
+:root{
+  --label-color: #333;
+}
+
+html.dark-theme{
+  --label-color: #fff;
+}
+
 .contact-container {
   flex: 1;
   display: flex;
@@ -32,7 +40,7 @@
 .form-group label {
   font-weight: 500;
   margin-bottom: 8px;
-  color: #333;
+  color: var(--label-color);
 }
 
 .form-group input,
