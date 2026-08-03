@@ -21,6 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const confirmationOverlay = document.getElementById("confirmation-overlay");
 
   const confirmationCarType = document.getElementById("confirmation-car-type");
+  const confirmationCarCategory = document.getElementById("confirmation-car-category");
+  const confirmationCarTransmission = document.getElementById("confirmation-car-transmission");
+  const confirmationCarSeats = document.getElementById("confirmation-car-seats");
+  const confirmationCarColour = document.getElementById("confirmation-car-colour");
+  const confirmationCarPrice = document.getElementById("confirmation-car-price");
   const confirmationPickupDate = document.getElementById("confirmation-pickup-date");
   const confirmationReturnDate = document.getElementById("confirmation-return-date");
   const confirmationRentalDuration = document.getElementById("confirmation-rental-duration");
@@ -138,6 +143,15 @@ document.addEventListener("DOMContentLoaded", () => {
     SaveBookingToLocalStorage(booking);
   }
 
+  function GetCurrentCarIdFromUrl(){
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("car");
+  }
+
+  function GetCurrentCarFromId(carId){
+    return getCarById(carId);
+  }
+
   function ShowConfirmationForm(){
     confirmationOverlay.classList.add("active");
   }
@@ -236,8 +250,19 @@ document.addEventListener("DOMContentLoaded", () => {
     errorElement.textContent = "";
   }
 
+  function CalculateTotalPrice(pricePerDay, durationDays) {
+    return pricePerDay * durationDays;
+  }
+
   function SetBookingDetailsForConfirmation(){
-    //confirmationCarType.value = something that idk yet
+    const car = GetCurrentCarFromId(GetCurrentCarIdFromUrl());
+
+    confirmationCarType.textContent = car.name;
+    confirmationCarCategory.textContent = car.category;
+    confirmationCarTransmission.textContent = car.transmission;
+    confirmationCarSeats.textContent = car.seats;
+    confirmationCarColour.textContent = car.colour;
+    confirmationCarPrice.textContent = `£${CalculateTotalPrice(car.price, CalculateRentalDurationDays()).toFixed(2)}`;
     confirmationPickupDate.textContent = startDate.value;
     confirmationReturnDate.textContent = endDate.value;
     confirmationRentalDuration.textContent = FormatDurationInDaysToString(CalculateRentalDurationDays());

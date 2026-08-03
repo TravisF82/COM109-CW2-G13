@@ -286,6 +286,7 @@ body {
 }
 
 .booking-details-header{
+  background-color: var(--background);
   border-bottom: 1px solid var(--input-border);
   text-align: center;
 }
@@ -300,6 +301,10 @@ body {
 .booking-row{
   display: flex;
   justify-content: space-between;
+}
+
+.booking-row:nth-child(even){
+  background-color: var(--background);
 }
 
 .confirmation-buttons{
