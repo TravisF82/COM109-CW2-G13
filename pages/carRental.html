@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/carRental.css">
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
@@ -41,6 +43,30 @@
       </div>
     </nav>
 
+    <main>
+      <!-- ============ PAGE INTRO ============ -->
+      <section class="cars-intro">
+        <h1>Available Cars</h1>
+        <p>Choose from our fleet and book instantly — no fuss, no hidden fees.</p>
+      </section>
+
+      <!-- ============ FILTER BAR ============ -->
+      <section class="filter-bar" aria-label="Filter cars by category">
+        <button class="filter-btn active" data-filter="all" type="button">All</button>
+        <button class="filter-btn" data-filter="Economy" type="button">Economy</button>
+        <button class="filter-btn" data-filter="Compact" type="button">Compact</button>
+        <button class="filter-btn" data-filter="Premium" type="button">Premium</button>
+        <button class="filter-btn" data-filter="SUV" type="button">SUV</button>
+        <button class="filter-btn" data-filter="Electric" type="button">Electric</button>
+      </section>
+
+      <!-- ============ CAR GRID (populated by JS) ============ -->
+      <section class="car-grid" id="carGrid" aria-live="polite">
+        <!-- car <article> cards are injected here by js/cars.js -->
+      </section>
+
+      <p class="no-results" id="noResults" hidden>No cars match that filter right now.</p>
+      </main>
     <!--content here will push footer-->
 
     <footer>
@@ -94,5 +120,9 @@
       <hr />
       <p id="copyright">&copy; 2026 DriveAway</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/car-data.js"></script>
+    <script src="../js/carRental.js"></script>
   </body>
 </html>
