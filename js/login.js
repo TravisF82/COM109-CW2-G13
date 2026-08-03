@@ -234,7 +234,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize check on page load
   checkActiveSession();
+  SetSettingsOnLoad();
 });
+
+function SetSettingsOnLoad(){
+  themeSwitch.checked = GetTheme() === "dark";
+}
 
 const themeSwitch = document.getElementById("theme-switch");
 themeSwitch.addEventListener("change", () => {

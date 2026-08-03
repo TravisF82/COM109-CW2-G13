@@ -48,5 +48,4 @@ function GetTheme(){
 function ApplyTheme(){
   const theme = GetTheme();
   document.documentElement.classList.toggle("dark-theme", theme === "dark");
-  themeSwitch.checked = theme === "dark";
 }
