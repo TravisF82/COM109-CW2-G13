@@ -1,99 +1,171 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DriveAway</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="../images/icons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="../images/icons/favicon-16x16.png"
-    />
-  </head>
-  <body>
-    <nav>
-      <div>
-        <label><span>Drive</span>Away</label>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DriveAway</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/dashboard.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="../images/icons/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="../images/icons/favicon-16x16.png"
+  />
+</head>
+<body>
+<nav>
+  <div>
+    <label><span>Drive</span>Away</label>
+  </div>
+  <div>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./pages/about.html">About</a></li>
+      <li><a href="./pages/contact.html">Contact</a></li>
+      <li><a href="./pages/login.html">Member Portal</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Your Journey Starts Here</h1>
+      <p class="hero-sub">Simple, flexible and reliable car rental across Belfast and beyond. No hidden fees. No hassle.</p>
+      <div class="hero-buttons">
+        <a href="./pages/carRental.html" class="btn btn--primary">Browse Cars</a>
+        <a href="./pages/about.html" class="btn btn--outline">Learn More</a>
       </div>
-      <div>
-        <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./pages/about.html">About</a></li>
-          <li><a href="./pages/contact.html">Contact</a></li>
-          <li><a href="./pages/login.html">Member Portal</a></li>
-        </ul>
-      </div>
-    </nav>
+    </div>
+  </section>
 
-    <!--add some content here and it will push the footer down for you when you fill the space-->
+  <!-- Popular picks -->
+  <section class="popular-picks container">
+    <p class="eyebrow eyebrow--center">Our Fleet</p>
+    <h2>Popular Picks</h2>
+    <p class="section-sub">Hand-picked vehicles our customers love most — all clean, serviced, and ready to go.</p>
 
-    <footer>
-      <div class="container">
-        <div class="brand">
-          <h3>DriveAway</h3>
-          <p>Your journey starts here.</p>
-        </div>
+    <div class="picks-grid" id="picksGrid" aria-live="polite">
+    </div>
 
-        <div class="quick-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./pages/about.html">About Us</a></li>
-            <li><a href="./pages/contact.html">Contact</a></li>
-            <li><a href="./pages/login.html">Member Portal</a></li>
-          </ul>
-        </div>
+    <div class="view-all-wrap">
+      <a href="./pages/carRental.html" class="btn btn--outline-accent">View All Cars &rarr;</a>
+    </div>
+  </section>
 
-        <div class="support">
-          <h3>Support</h3>
-          <ul>
-            <li><a>FAQs</a></li>
-            <li><a>Contact Us</a></li>
-            <li><a>Terms & Cond.</a></li>
-            <li><a>Privacy Policy</a></li>
-          </ul>
-        </div>
+  <!-- Reviews -->
+  <section class="reviews container">
+    <p class="eyebrow eyebrow--center">Reviews</p>
+    <h2>What Our Customers Say</h2>
+    <p class="section-sub">Trusted by hundreds of drivers across Northern Ireland.</p>
 
-        <div class="contact">
-          <h3>Contact</h3>
-          <p>01234 567890</p>
-          <p>driveaway@gmail.com</p>
-          <p>Belfast, UK</p>
-        </div>
+    <div class="reviews-grid" id="reviewsGrid" aria-live="polite">
+    </div>
+  </section>
 
-        <div class="social-links">
-          <h3>Social Links</h3>
-          <a href="https://www.instagram.com"
-            ><i class="fa-brands fa-instagram" title="instagram"></i
-          ></a>
-          <a href="https://www.facebook.com"
-            ><i class="fa-brands fa-facebook" title="facebook"></i
-          ></a>
-          <a href="https://www.x.com"
-            ><i class="fa-brands fa-x-twitter" title="x"></i
-          ></a>
-        </div>
-      </div>
+  <!-- Trust Badges -->
+  <section class="trust-badges">
+    <div class="container trust-grid">
+      <article class="trust-item">
+        <span class="trust-icon" aria-hidden="true">🔒</span>
+        <h3>Secure Booking</h3>
+        <p>SSL encrypted checkout</p>
+      </article>
+      <article class="trust-item">
+        <span class="trust-icon" aria-hidden="true">🔄</span>
+        <h3>Free Cancellation</h3>
+        <p>Up to 48hrs before pickup</p>
+      </article>
+      <article class="trust-item">
+        <span class="trust-icon" aria-hidden="true">📞</span>
+        <h3>24/7 Support</h3>
+        <p>We're always on hand</p>
+      </article>
+      <article class="trust-item">
+        <span class="trust-icon" aria-hidden="true">✅</span>
+        <h3>Fully Insured</h3>
+        <p>All vehicles covered</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Cta -->
+  <section class="cta-section">
+    <h2>Ready to Hit the Road?</h2>
+    <p>Browse our full fleet and book your next rental in minutes — no hidden fees, no fuss.</p>
+    <a href="./pages/carRental.html" class="btn btn--cta">View Available Cars</a>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="brand">
+      <h3>DriveAway</h3>
+      <p>Your journey starts here.</p>
+    </div>
+
+    <div class="quick-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./pages/about.html">About Us</a></li>
+        <li><a href="./pages/contact.html">Contact</a></li>
+        <li><a href="./pages/login.html">Member Portal</a></li>
+      </ul>
+    </div>
+
+    <div class="support">
+      <h3>Support</h3>
+      <ul>
+        <li><a>FAQs</a></li>
+        <li><a>Contact Us</a></li>
+        <li><a>Terms & Cond.</a></li>
+        <li><a>Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="contact">
+      <h3>Contact</h3>
+      <p>01234 567890</p>
+      <p>driveaway@gmail.com</p>
+      <p>Belfast, UK</p>
+    </div>
+
+    <div class="social-links">
+      <h3>Social Links</h3>
+      <a href="https://www.instagram.com"
+      ><i class="fa-brands fa-instagram" title="instagram"></i
+      ></a>
+      <a href="https://www.facebook.com"
+      ><i class="fa-brands fa-facebook" title="facebook"></i
+      ></a>
+      <a href="https://www.x.com"
+      ><i class="fa-brands fa-x-twitter" title="x"></i
+      ></a>
+    </div>
+  </div>
 
       <hr />
       <p id="copyright">&copy; 2026 DriveAway</p>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./js/global.js"></script>
-  </body>
+    <script src="./js/car-data.js"></script>
+    <script src="./js/dashboard.js"></script>
+</body>
 </html>
