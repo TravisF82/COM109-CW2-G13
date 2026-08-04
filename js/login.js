@@ -180,6 +180,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // 4. Dynamic Dashboard Injection & Logout
   const logoutBtn = document.getElementById("logout-btn");
 
+  function BookingExpired(booking){
+    return booking.endDate < new Date().toISOString().split('T')[0];
+  }
+
   function showDashboard(username) {
     authContainer.classList.add("hidden");
     dashboardView.classList.remove("hidden");
@@ -189,20 +193,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const bookingsList = document.getElementById('user-bookings-list');
     if (bookingsList) {
         bookingsList.innerHTML = ''; // clear previous
-        const allBookings = JSON.parse(localStorage.getItem('bookings')) || [];
-        const userBookings = allBookings.filter(b => b.username === username);
+        const allBookings = JSON.parse(localStorage.getItem('bookings')) || {};
+        const userBookings = allBookings[username] || [];
 
         if (userBookings.length === 0) {
             bookingsList.innerHTML = '<li>No active bookings found.</li>';
         } else {
             userBookings.forEach(booking => {
                 const li = document.createElement('li');
-                li.style.background = '#fff';
+                li.style.background = 'var(--background)';
                 li.style.padding = '10px';
                 li.style.marginBottom = '10px';
                 li.style.borderRadius = '4px';
                 li.style.borderLeft = '4px solid var(--blue)';
                 li.innerHTML = `<strong>Rental:</strong> ${booking.startDate} to ${booking.endDate}`;
+                const bookingStatus = BookingExpired(booking) ? "Expired" : "Active";
+                li.innerHTML += `<br><strong>Status:</strong> <span style="color: ${bookingStatus === "Expired" ? "orange" : "green"};">${bookingStatus}</span>`;
                 bookingsList.appendChild(li);
             });
         }
@@ -228,4 +234,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize check on page load
   checkActiveSession();
+  SetSettingsOnLoad();
+});
+
+function SetSettingsOnLoad(){
+  themeSwitch.checked = GetTheme() === "dark";
+}
+
+const themeSwitch = document.getElementById("theme-switch");
+themeSwitch.addEventListener("change", () => {
+  localStorage.setItem("theme", themeSwitch.checked ? "dark" : "light");
+  document.documentElement.classList.toggle("dark-theme", themeSwitch.checked);
 });

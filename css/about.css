@@ -1,9 +1,159 @@
+:root{
+  --section-background: #f1f6fe;
+  --sub-text: #8f939c;
+  --values-border-color: rgba(0, 0, 0, 0.1);
+}
+
+html.dark-theme{
+  --values-border-color: rgba(255, 255, 255, 0.1);
+}
+
 section {
   margin: 100px 20px 0px 20px;
 }
 
-.section-title {
-  margin-bottom: 10px;
+.seperator{
+  width: 10%;
+  height: 3px;
+}
+
+.seperator.blue{
+  background-color: var(--blue);
+}
+
+.seperator.orange{
+  background-color: orange;
+}
+
+/*----------Introduction Section----------*/
+
+#intro{
+  position: relative;
+  height: 500px;
+  margin: 0;
+}
+
+#intro span{
+  color: var(--blue);
+}
+
+#intro img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 70%;
+  user-select: none;
+}
+
+#intro img.active{
+  opacity: 1;
+}
+
+#intro::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    white 0%,
+    rgba(255, 255, 255, 0.95) 15%,
+    rgba(255, 255, 255, 0.5) 35%,
+    rgba(255, 255, 255, 0) 65%
+    );
+}
+
+.hero-content{
+  position: relative;
+  z-index: 1;
+  width: 45%;
+  padding: 100px 0 0 60px;
+}
+
+.hero-content .seperator{
+  margin: 10px 0 10px 0;
+}
+
+#heading{
+  font-weight: 500;
+}
+
+#sub-heading{
+  font-weight: 200;
+}
+
+/*----------Our Story Section----------*/
+
+.carousel{
+  position: relative;
+  height: 400px;
+  width: 100%;
+  text-align: center;
+  user-select: none;
+}
+
+.carousel .slide{
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 70%;
+  max-height: 90%;
+  border-radius: 5px;
+  filter: blur(4px);
+  opacity: 0;
+  transition:
+    opacity 0.8s ease-in-out,
+    filter 0.8s ease,
+    transform 0.8s ease;
+}
+
+.carousel .slide.active{
+  transform: translate(-50%, -50%);
+  filter: blur(0);
+  opacity: 1;
+  z-index: 3;
+}
+
+.carousel .slide.stack-1{
+  transform: translate(calc(-50% + 15px), calc(-50% - 15px));
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.carousel .slide.stack-2{
+  transform: translate(calc(-50% + 30px), calc(-50% - 30px));
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.carousel label{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -20px;
+  z-index: 2;
+  font-size: 0.8rem;
+}
+
+#values-section{
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.our-story-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.our-story-container .content h4{
+  color: orange;
+}
+
+.our-story-container .content .seperator{
+  margin: 10px 0 10px 0;
 }
 
 .card-grid-container {
@@ -12,16 +162,350 @@ section {
   gap: 10px;
 }
 
-.card {
+/*----------Why Choose Us Section----------*/
+
+#why-choose-us-section{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
   text-align: center;
-  padding: 5px;
-  background-color: white;
+  background-color: var(--background-accent);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#why-choose-us-section h4{
+  color: orange;
+}
+
+#why-choose-us-section .title-container{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+}
+
+@keyframes CardAppear{
+  from{
+    opacity: 0;
+    transform: translateY(200%);
+  } to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  background-color: var(--background);
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+  animation: CardAppear;
+  animation-timeline: view();
+  animation-fill-mode: both;
+}
+
+.card:nth-child(1) {
+  animation-range: entry 0% cover 40%;
+}
+
+.card:nth-child(2) {
+  animation-range: entry 20% cover 60%;
+}
+
+.card:nth-child(3) {
+  animation-range: entry 40% cover 80%;
 }
 
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card .icon{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: var(--blue);
+  color: white;
+}
+
+.card .icon i{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+}
+
+.card h3{
+  margin-top: 15px;
+}
+
+.card .seperator{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/*----------Values Section----------*/
+
+#values-section{
+  position: relative;
+}
+
+#values-section h4{
+  color: orange;
+}
+
+#values-section .title-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.values-container{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+@keyframes FadeIn{
+  from{
+    opacity: 0.5;
+  } to{
+    opacity: 1;
+  }
+}
+
+.values-container > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--background);
+  padding: 5px;
+  animation: FadeIn;
+  animation-timeline: view();
+}
+
+.values-container > div:nth-child(1),
+.values-container > div:nth-child(2),
+.values-container > div:nth-child(3){
+  border-right: 1px solid var(--values-border-color);
+}
+
+.values-container .icon-wrapper{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(255, 165, 0, 0.4);
+  border-radius: 50%;
+}
+
+.values-container > div i{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.7rem;
+  color: orange;
+}
+
+.icon-wrapper .fa-check{
+  font-size: 12px;
+  color: white;
+}
+
+/*----------How It Works Section----------*/
+
+#how-it-works-section{
+  position: relative;
+  height: 600px;
+  background-color: var(--background-accent);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#how-it-works-section .title-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#how-it-works-section h4{
+  color: orange;
+}
+
+#how-it-works-section h5{
+  font-weight: 100;
+  color: var(--sub-text);
+}
+
+.steps-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 30px;
+}
+
+@keyframes ProgressTimeline{
+  from{
+    transform: scaleX(0);
+  } to{
+    transform: scaleX(1);
+  }
+}
+
+@keyframes DrawtimeStepConnection{
+  from{
+    height: 0;
+  } to{
+    height: 40px;
+  }
+}
+
+@keyframes IntroduceTimeStep{
+  from{
+    opacity: 0;
+    transform: translateY(100%);
+  } to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 50px auto;
+}
+
+.timeline::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 16%;
+  right: 16%;
+  height: 2px;
+  background-color: var(--blue);
+  transform-origin: left;
+  animation: ProgressTimeline;
+  animation-timeline: view();
+}
+
+.timeline-step{
+  position: relative;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--blue);
+  border-radius: 50%;
+  background-color: var(--background);
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: auto;
+}
+
+.timeline-step::before{
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 40px;
+  border-left: 2px dashed var(--blue);
+  animation: DrawtimeStepConnection;
+  animation-timeline: view();
+}
+
+.timeline-step:nth-child(2){
+  animation: IntroduceTimeStep;
+  animation-timeline: view();
+  animation-range: entry 35% entry 55%;
+}
+
+.timeline-step:nth-child(3) {
+  animation: IntroduceTimeStep;
+  animation-timeline: view();
+  animation-range: entry 65% entry 85%;
+}
+
+.timeline-step:nth-child(2)::before {
+  animation: DrawtimeStepConnection;
+  animation-timeline: view();
+  animation-range: entry 35% entry 55%;
+}
+
+.timeline-step:nth-child(3)::before {
+  animation: DrawtimeStepConnection;
+  animation-timeline: view();
+  animation-range: entry 65% entry 85%;
+}
+
+.step{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  animation: IntroduceTimeStep;
+  animation-timeline: view();
+}
+
+.step .icon-wrapper{
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: var(--blue);
+  border-radius: 50%;
+}
+
+.step i{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.8rem;
+}
+
+.step h3{
+
+}
+
+.step p{
+  font-weight: 80;
+  color: var(--sub-text);
+  max-width: 60%;
+}
+
+#pre-footer-filler-section{
+  height: 200px;
+  background-color: var(--background-accent);
+  margin-left: 0;
+  margin-right: 0;
 }

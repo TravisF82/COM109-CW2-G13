@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Check for active session globally
-  const activeLocal = localStorage.getItem("active_session");
-  const activeSession = sessionStorage.getItem("active_session");
-  const currentUser = activeLocal || activeSession;
+  const currentUser = GetCurrentUser();
 
   // Update navigation based on session
   const navLinks = document.querySelectorAll("nav ul li a");
@@ -32,4 +30,22 @@ document.addEventListener("DOMContentLoaded", () => {
   if (currentUser && memberPortalLink) {
     memberPortalLink.innerHTML = `<i class="fa-solid fa-user"></i> ${currentUser}`;
   }
+
+  ApplyTheme();
 });
+
+function GetCurrentUser() {
+  const activeLocal = localStorage.getItem("active_session");
+  const activeSession = sessionStorage.getItem("active_session");
+
+  return activeLocal || activeSession;
+}
+
+function GetTheme(){
+  return localStorage.getItem("theme") || "light";
+}
+
+function ApplyTheme(){
+  const theme = GetTheme();
+  document.documentElement.classList.toggle("dark-theme", theme === "dark");
+}

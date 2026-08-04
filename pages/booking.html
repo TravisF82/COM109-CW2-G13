@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/booking.css" />
     <link
       rel="stylesheet"
@@ -24,9 +25,23 @@
       sizes="16x16"
       href="../images/icons/favicon-16x16.png"
     />
-    <title>Booking</title>
+    <title>Booking | DriveAway</title>
   </head>
   <body>
+    <nav>
+      <div>
+        <label><span>Drive</span>Away</label>
+      </div>
+      <div>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li><a href="./carRental.html">Rent A Car</a></li>
+          <li><a href="./login.html">Member Portal</a></li>
+        </ul>
+      </div>
+    </nav>
     <form name="booking" class="booking" id="booking-form">
       <div class="back-square top-left"></div>
       <div class="back-square bottom-right"></div>
@@ -67,16 +82,12 @@
         placeholder="Email"
       />
       <span class="error-message" id="email-error"></span>
-
-      <label>Phone Number<i class="fa-solid fa-phone"></i></label>
-      <input
-        type="tel"
-        name="phone"
-        for="phone"
-        id="phone"
-        placeholder="Phone Number"
-      />
-      <span class="error-message" id="phone-error"></span>
+        <label>Phone Number<i class="fa-solid fa-phone"></i></label>
+        <div class="phone-input">
+            <img src="../images/uk_flag.svg" alt="UK" id="flag">
+            <input type="tel" name="phone" for="phone" id="phone" placeholder="Phone Number">
+        </div>
+        <span class="error-message" id="phone-error"></span>
 
       <label>Date of Pickup<i class="fa-regular fa-calendar"></i></label>
       <input type="date" name="start-date" for="start-date" id="start-date" />
@@ -93,8 +104,138 @@
       <label id="duration"></label>
       <button type="submit">Confirm</button>
     </form>
+    
 
-    <script src="../js/booking.js"></script>
-    <script src="../js/global.js"></script>
+    <!--Confirmation form-->
+    <div class="confirmation-overlay" id="confirmation-overlay">
+        <div class="confirmation-form">
+          <div class="title-container">
+            <h2>Booking successfully created.</h2>
+            <div class="checkmark-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="svg-success" viewBox="0 0 24 24" alt="Success">
+                    <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+                    <circle class="success-circle-outline" cx="12" cy="12" r="11.5"/>
+                    <circle class="success-circle-fill" cx="12" cy="12" r="11.5"/>
+                    <polyline class="success-tick" points="17,8.5 9.5,15.5 7,13"/>
+                    </g>
+                </svg>
+            </div>
+
+            <p>Your car rental has been successfully booked!</p>
+          </div>
+
+            <div class="booking-details-container">
+                <div class="booking-details-header">
+                    <label>Booking Details<i class="fa-solid fa-receipt"></i></label>
+                </div>
+
+                <div class="booking-details-content">
+                    <div class="booking-row">
+                        <span>Car Type</span>
+                        <span id="confirmation-car-type"></span>
+                    </div>
+                    <div class="booking-row">
+                        <span>Car Category</span>
+                        <span id="confirmation-car-category"></span>
+                    </div>
+                    <div class="booking-row">
+                        <span>Car Transmission</span>
+                        <span id="confirmation-car-transmission"></span>
+                    </div>
+                    <div class="booking-row">
+                        <span>No. Seats</span>
+                        <span id="confirmation-car-seats"></span>
+                    </div>
+                    <div class="booking-row">
+                        <span>Car Colour</span>
+                        <span id="confirmation-car-colour"></span>
+                    </div>
+                    <div class="booking-row">
+                        <span>Price</span>
+                        <span id="confirmation-car-price"></span>
+                    </div>
+                    <div class="booking-row">
+                        <span>Pickup Date</span>
+                        <span id="confirmation-pickup-date"></span>
+                    </div>
+                    <div class="booking-row">
+                        <span>Return Date</span>
+                        <span id="confirmation-return-date"></span>
+                    </div>
+                    <div class="booking-row">
+                        <span>Rental Duration</span>
+                        <span id="confirmation-rental-duration"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirmation-buttons">
+                <button id="go-to-booking" type="button">
+                    View My Bookings
+                </button>
+                <button id="go-to-home" type="button">
+                    Back to Home
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="brand">
+          <h3>DriveAway</h3>
+          <p>Your journey starts here.</p>
+        </div>
+
+        <div class="quick-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./about.html">About Us</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./carRental.html">Rent A Car</a></li>
+            <li><a href="./login.html">Member Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="support">
+          <h3>Support</h3>
+          <ul>
+            <li><a>FAQs</a></li>
+            <li><a>Contact Us</a></li>
+            <li><a>Terms & Cond.</a></li>
+            <li><a>Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="contact">
+          <h3>Contact</h3>
+          <p><i class="fa-solid fa-phone"></i>01234 567890</p>
+          <p><i class="fa-regular fa-envelope"></i>driveaway@gmail.com</p>
+          <p><i class="fa-solid fa-location-dot"></i>Belfast, UK</p>
+        </div>
+
+        <div class="social-links">
+          <h3>Social Links</h3>
+          <a href="https://www.instagram.com"
+            ><i class="fa-brands fa-instagram" title="instagram"></i
+          ></a>
+          <a href="https://www.facebook.com"
+            ><i class="fa-brands fa-facebook" title="facebook"></i
+          ></a>
+          <a href="https://www.x.com"
+            ><i class="fa-brands fa-x-twitter" title="x"></i
+          ></a>
+        </div>
+      </div>
+
+      <hr />
+      <p id="copyright">&copy; 2026 DriveAway</p>
+    </footer>
+
+    <script src="../js/global.js" defer></script>
+    <script src="../js/car-data.js" defer></script>
+    <script src="../js/booking.js" defer></script>
   </body>
 </html>

@@ -25,7 +25,7 @@
       sizes="16x16"
       href="../images/icons/favicon-16x16.png"
     />
-    <title>About Us</title>
+    <title>About Us | DriveAway</title>
   </head>
   <body>
     <nav>
@@ -35,57 +35,214 @@
       <div>
         <ul>
           <li><a href="../index.html">Home</a></li>
-          <li><a href="./about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Member Portal</a></li>
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li><a href="./carRental.html">Rent A Car</a></li>
+          <li><a href="./login.html">Member Portal</a></li>
         </ul>
       </div>
     </nav>
 
-    <section>
-      <h1>About DriveAway</h1>
-      <h3>Your journey starts here.</h3>
-      <h3>Simple, flexible and reliable car rental.</h3>
+    <section id="intro">
+      <img
+      src="../images/landscape-header-wideshot.jpg"
+      alt="Car driving along a scenic road">
+
+      <div class="hero-content">
+        <h1>About <span>DriveAway</span></h1>
+        <div class="seperator orange"></div>
+        <h3 id="heading">Your journey starts here.</h3>
+        <h3 id="sub-heading">Simple, flexible and reliable car rental.</h3>
+      </div>
     </section>
 
     <section>
-      <h2 class="section-title">Our Story</h2>
-      <p>
-        DriveAway was founded with one simple goal: to make car rental easier.
-        We wanted to create a service where customers could quickly find a
-        vehicle that suits their needs, book online and get on with their
-        journey.
-        <br />
-        From city breaks to long-distance road trips, we offer a range of
-        reliable vehicles designed to fit different journeys and budgets.
-      </p>
+      <div class="our-story-container">
+        <div class="carousel">
+          <img
+          src="../images/carousel-scene-1.jpg"
+          alt="Cinematic car on a road trip shot"
+          class="slide"
+          loading="lazy">
+          <img
+          src="../images/carousel-scene-2.jpg"
+          alt="Cinematic car on a road trip shot"
+          class="slide"
+          loading="lazy">
+          <img
+          src="../images/carousel-scene-3.jpg"
+          alt="Cinematic car on a road trip shot"
+          class="slide"
+          loading="lazy">
+          <img
+          src="../images/carousel-scene-4.jpg"
+          alt="Cinematic car on a road trip shot"
+          id="wideshot-header"
+          class="slide"
+          loading="lazy">
+          <img
+          src="../images/carousel-scene-5.jpg"
+          alt="Cinematic car on a road trip shot"
+          class="slide"
+          loading="lazy">
+          <img
+          src="../images/carousel-scene-6.jpg"
+          alt="Cinematic car on a road trip shot"
+          class="slide"
+          loading="lazy">
+          <label>Snapshots taken from our customers</label>
+        </div>
+
+        <div class="content">
+          <h4 class="section-title">Our Story</h4>
+          <h2>Driven by passion.</h2>
+          <br>
+          <h2>Focused on you.</h2>
+          <div class="seperator blue"></div>
+          <p>
+            DriveAway was founded with one simple goal: to make car rental easier.
+            We wanted to create a service where customers could quickly find a
+            vehicle that suits their needs, book online and get on with their
+            journey.
+            <br><br>
+            From city breaks to long-distance road trips, we offer a range of
+            reliable vehicles designed to fit different journeys and budgets.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2 class="section-title">Why Choose Us?</h2>
+    <section id="why-choose-us-section">
+      <div class="title-container">
+        <h4>Why Choose Us?</h4>
+        <h2 class="section-title">Designed around your journey.</h2>
+      </div>
+
       <div class="card-grid-container">
         <div class="card">
+          <div class="icon">
+            <i class="fa-solid fa-car"></i>
+          </div>
           <h3>Wide Choice</h3>
+          <div class="seperator orange"></div>
           <br />
           <p>A range of vehicles for every journey.</p>
         </div>
 
         <div class="card">
+          <div class="icon">
+            <i class="fa-solid fa-sterling-sign"></i>
+          </div>
           <h3>Fair Prices</h3>
+          <div class="seperator orange"></div>
           <br />
           <p>A range of vehicles for every journey.</p>
         </div>
 
         <div class="card">
+          <div class="icon">
+            <i class="fa-solid fa-calendar-days"></i>
+          </div>
           <h3>Easy Booking</h3>
+          <div class="seperator orange"></div>
           <br />
           <p>A range of vehicles for every journey.</p>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2 class="section-title">Our Values</h2>
+    <section id="values-section">
+      <div class="title-container">
+        <h4>Our Values</h4>
+        <h2>What drives us everyday.</h2>
+      </div>
+      <div class="values-container">
+        <div class="reliability">
+          <div class="icon-wrapper">
+            <i class="fa-solid fa-shield"></i>
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h3>Reliability</h3>
+          <br>
+          <p>You can count on us for quality vehicles and dependable services.</p>
+        </div>
+        <div class="customer-first">
+          <div class="icon-wrapper">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <h3>Customer First</h3>
+          <br>
+          <p>We put your needs first and strive to exceed your expectations.</p>
+        </div>
+        <div class="value">
+          <div class="icon-wrapper">
+            <i class="fa-solid fa-tag"></i>
+          </div>
+          <h3>Value</h3>
+          <br>
+          <p>We offer great value through fair pricing and feasable options.</p>
+        </div>
+        <div class="responsibility">
+          <div class="icon-wrapper">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <h3>Responsibility</h3>
+          <br>
+          <p>We care about our community and the environment</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works-section">
+      <div class="title-container">
+        <h4>How it works</h4>
+        <div class="seperator orange"></div>
+        <h2>Taking you through the process.</h2>
+        <h5>Renting a car with DriveAway is quick, easy and hassle-free.</h5>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-step">
+          <span>1</span>
+        </div>
+        <div class="timeline-step">
+          <span>2</span>
+        </div>
+        <div class="timeline-step">
+          <span>3</span>
+        </div>
+      </div>
+
+      <div class="steps-container">
+        <div class="step">
+          <div class="icon-wrapper">
+            <i class="fa-solid fa-car"></i>
+          </div>
+          <h3>Chose a car</h3>
+          <div class="seperator orange"></div>
+          <p>Browse our range of reliable vehicles and find the perfect car for your needs.</p>
+        </div>
+        <div class="step">
+          <div class="icon-wrapper">
+            <i class="fa-solid fa-calendar-days"></i>
+          </div>
+          <h3>Make a booking</h3>
+          <div class="seperator orange"></div>
+          <p>Select your dates and provide your details through our simple online booking form.</p>
+        </div>
+        <div class="step">
+          <div class="icon-wrapper">
+            <i class="fa-solid fa-road"></i>
+          </div>
+          <h3>Start your journey</h3>
+          <div class="seperator orange"></div>
+          <p>Collect your vehicle and you're ready to enjoy the freedom of the open road.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pre-footer-filler-section">
+
     </section>
 
     <footer>
@@ -100,8 +257,9 @@
           <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="./about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="login.html">Member Portal</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./carRental.html">Rent A Car</a></li>
+            <li><a href="./login.html">Member Portal</a></li>
           </ul>
         </div>
 
@@ -117,9 +275,9 @@
 
         <div class="contact">
           <h3>Contact</h3>
-          <p>01234 567890</p>
-          <p>driveaway@gmail.com</p>
-          <p>Belfast, UK</p>
+          <p><i class="fa-solid fa-phone"></i>01234 567890</p>
+          <p><i class="fa-regular fa-envelope"></i>driveaway@gmail.com</p>
+          <p><i class="fa-solid fa-location-dot"></i>Belfast, UK</p>
         </div>
 
         <div class="social-links">
@@ -139,6 +297,7 @@
       <hr />
       <p id="copyright">&copy; 2026 DriveAway</p>
     </footer>
-    <script src="../js/global.js"></script>
+    <script src="../js/about.js" defer></script>
+    <script src="../js/global.js" defer></script>
   </body>
 </html>

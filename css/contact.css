@@ -1,14 +1,22 @@
+:root{
+  --label-color: #333;
+}
+
+html.dark-theme{
+  --label-color: #fff;
+}
+
 .contact-container {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 50px 20px;
-  background-color: #f8fafc;
+  background-color: var(--background-accent);
 }
 
 .contact-form-wrapper {
-  background: #ffffff;
+  background: var(--background);
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -32,13 +40,14 @@
 .form-group label {
   font-weight: 500;
   margin-bottom: 8px;
-  color: #333;
+  color: var(--label-color);
 }
 
 .form-group input,
 .form-group textarea {
+  background-color: var(--input-background);
   padding: 12px 15px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border);
   border-radius: 8px;
   font-family: inherit;
   font-size: 1rem;
