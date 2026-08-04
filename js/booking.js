@@ -40,77 +40,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
   SetMaxEndDate();
   UpdateDuration();
+  AddEventListeners();
+  
+  function AddEventListeners(){
+    startDate.addEventListener("change", () => {
+      endDate.min = startDate.value;
+      if (endDate.value < startDate.value) {
+        endDate.value = startDate.value;
+      }
 
-  startDate.addEventListener("change", () => {
-    endDate.min = startDate.value;
-    if (endDate.value < startDate.value) {
-      endDate.value = startDate.value;
-    }
+      SetMaxEndDate();
+      UpdateDuration();
+    });
 
-    SetMaxEndDate();
-    UpdateDuration();
-  });
+    endDate.addEventListener("change", UpdateDuration);
 
-  endDate.addEventListener("change", UpdateDuration);
+    forename.addEventListener("change", () => {
+      ValidateInputField(forename, forenameError, ValidateForename);
+    });
 
-  forename.addEventListener("change", () => {
-    ValidateInputField(forename, forenameError, ValidateForename);
-  });
+    surname.addEventListener("change", () => {
+      ValidateInputField(surname, surnameError, ValidateSurname);
+    });
 
-  surname.addEventListener("change", () => {
-    ValidateInputField(surname, surnameError, ValidateSurname);
-  });
+    email.addEventListener("change", () => {
+      ValidateInputField(email, emailError, ValidateEmail);
+    });
 
-  email.addEventListener("change", () => {
-    ValidateInputField(email, emailError, ValidateEmail);
-  });
+    phone.addEventListener("change", () => {
+      ValidateInputField(phone, phoneError, ValidatePhone);
+    });
 
-  phone.addEventListener("change", () => {
-    ValidateInputField(phone, phoneError, ValidatePhone);
-  });
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+      const forenameValid = ValidateInputField(
+        forename,
+        forenameError,
+        ValidateForename,
+      );
+      const surnameValid = ValidateInputField(
+        surname,
+        surnameError,
+        ValidateSurname,
+      );
+      const emailValid = ValidateInputField(email, emailError, ValidateEmail);
+      const phoneValid = ValidateInputField(phone, phoneError, ValidatePhone);
 
-    const forenameValid = ValidateInputField(
-      forename,
-      forenameError,
-      ValidateForename,
-    );
-    const surnameValid = ValidateInputField(
-      surname,
-      surnameError,
-      ValidateSurname,
-    );
-    const emailValid = ValidateInputField(email, emailError, ValidateEmail);
-    const phoneValid = ValidateInputField(phone, phoneError, ValidatePhone);
+      if (!forenameValid || !surnameValid || !emailValid || !phoneValid) {
+        return;
+      }
 
-    if (!forenameValid || !surnameValid || !emailValid || !phoneValid) {
-      return;
-    }
+      const booking = {
+        forename: forename.value,
+        surname: surname.value,
+        email: email.value,
+        phone: phone.value,
+        startDate: startDate.value,
+        endDate: endDate.value,
+      };
 
-    const booking = {
-      forename: forename.value,
-      surname: surname.value,
-      email: email.value,
-      phone: phone.value,
-      startDate: startDate.value,
-      endDate: endDate.value,
-    };
+      SaveBooking(booking);
+      SetBookingDetailsForConfirmation();
+      ShowConfirmationForm();
+      form.reset();
+    });
 
-    SaveBooking(booking);
-    SetBookingDetailsForConfirmation();
-    ShowConfirmationForm();
-    form.reset();
-  });
+    homeButton.addEventListener("click", () => {
+      window.location.href = "../index.html";
+    });
 
-  homeButton.addEventListener("click", () => {
-    window.location.href = "../index.html";
-  });
-
-  viewBookingButton.addEventListener("click", () => {
-    window.location.href = "./login.html";
-  });
+    viewBookingButton.addEventListener("click", () => {
+      window.location.href = "./login.html";
+    });
+  }
 
   function CalculateRentalDurationDays(){
     const start = new Date(startDate.value);
