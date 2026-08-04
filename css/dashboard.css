@@ -9,6 +9,10 @@
     --da-card-bg: #eef0f4;
 }
 
+html.dark-theme{
+    --da-card-bg: #2c3e91;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -126,12 +130,11 @@
 .popular-picks h2,
 .reviews h2 {
     font-size: 2.2rem;
-    color: var(--da-text-dark);
+    color: var(--text);
     margin: 0 0 0.5rem;
 }
 
 .section-sub {
-    color: var(--da-text-muted);
     max-width: 500px;
     margin: 0 auto 2.5rem;
 }
@@ -192,6 +195,7 @@
 .pick-card__title-row h3 {
     margin: 0;
     font-size: 1.1rem;
+    color: var(--da-text-dark);
 }
 
 .pick-card__specs {
@@ -285,7 +289,7 @@
 
 .review-quote {
     font-style: italic;
-    color: var(--da-text-dark);
+    color: var(--text);
     margin-bottom: 1.2rem;
 }
 
@@ -311,7 +315,7 @@
 .review-name {
     font-weight: 600;
     margin: 0;
-    color: var(--da-text-dark);
+    color: var(--text);
 }
 
 .review-location {
@@ -346,7 +350,7 @@
 
 .trust-item h3 {
     margin: 0 0 0.3rem;
-    color: var(--da-text-dark);
+    color: var(--text);
     font-size: 1.05rem;
 }
 
