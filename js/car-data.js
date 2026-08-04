@@ -1,9 +1,5 @@
-/*
-   DriveAway — shared car data
-   Used by both js/cars.js (listing page) and js/booking.js (booking page)
-*/
+// DriveAway — shared car data
 
-// body: "hatch" | "saloon" | "suv" | "sports" | "van" → which SVG silhouette to draw
 const CARS = [
     { id: "yaris",   name: "Toyota Yaris",    category: "Economy", seats: 5, transmission: "Manual",    fuel: "Petrol",  colour: "Red",    price: 29,  body: "hatch" },
     { id: "golf",    name: "Volkswagen Golf", category: "Compact", seats: 5, transmission: "Automatic", fuel: "Petrol",  colour: "Silver", price: 45,  body: "hatch" },
@@ -15,13 +11,11 @@ const CARS = [
     { id: "zoe",     name: "Renault Zoe",     category: "Electric",seats: 5, transmission: "Automatic", fuel: "Electric",colour: "Green",  price: 42,  body: "hatch" },
 ];
 
-// Named colours → hex, so the SVG body panel matches each car's real colour
 const COLOUR_HEX = {
     Red: "#d64545", Silver: "#b9bfc7", Blue: "#3d5afe", Black: "#2a2e37",
     White: "#eef0f4", Grey: "#8c93a0", Green: "#2e9e63",
 };
 
-// One reusable flat-style SVG silhouette per body type (side-on view).
 const CAR_SVGS = {
     hatch: (fill) => `
     <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">

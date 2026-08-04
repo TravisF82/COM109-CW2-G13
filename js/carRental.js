@@ -1,7 +1,7 @@
 
 // DriveAway — Available Cars listing page
 
-const FILTER_KEY = "driveaway_last_filter"; // sessionStorage — only for this tab session
+const FILTER_KEY = "driveaway_last_filter";
 
 // Render car cards
 function renderCars(filter) {
